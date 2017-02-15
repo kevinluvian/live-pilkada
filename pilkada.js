@@ -51,7 +51,7 @@ $(document).ready(function () {
                 }
             },
             title: {
-                text: 'Live pilkada dki'
+                text: 'Agus Sylvi'
             },
             xAxis: {
                 type: 'datetime',
