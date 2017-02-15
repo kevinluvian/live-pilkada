@@ -31,6 +31,8 @@ var requestData = function() {
             pilkada_data = pilkada_data.split('\n');
             pilkada_data = pilkada_data.slice(Math.max(pilkada_data.length - 50, 0));
             if (data[0] && data[0].suaraKandidat) {
+                fs.appendFile('pilkada_data_all', JSON.stringify([time, data[0].suaraKandidat]) + '\n', function (err) {
+                });
                 fs.writeFile('pilkada_data', pilkada_data.join('\n') + JSON.stringify([time, data[0].suaraKandidat]) + '\n', function (err) {
                     setTimeout(requestData, 100)
                 });
@@ -44,6 +46,6 @@ var requestData = function() {
 }
 requestData()
 
-app.listen(80, function () {
+app.listen(3000, function () {
   console.log('Example app listening on port 3000!')
 })
