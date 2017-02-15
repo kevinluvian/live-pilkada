@@ -23,15 +23,16 @@ $(document).ready(function () {
             $.ajax({
                 url: '/getdata',
                 success: function(data) {
+                    console.log('get')
                     var data = JSON.parse(data)
                     // add the point
                     if (chart1 && chart2 && chart3 && chart1.series && chart2.series && chart3.series) {
                         chart1.series[0].addPoint([data[0], data[1]['1']['suaraTPS']], true, chart1.series[0].data.length > 50);
-                        chart2.series[1].addPoint([data[0], data[1]['2']['suaraTPS']], true, chart2.series[1].data.length > 50);
-                        chart3.series[2].addPoint([data[0], data[1]['3']['suaraTPS']], true, chart3.series[2].data.length > 50);
+                        chart2.series[0].addPoint([data[0], data[1]['2']['suaraTPS']], true, chart2.series[0].data.length > 50);
+                        chart3.series[0].addPoint([data[0], data[1]['3']['suaraTPS']], true, chart3.series[0].data.length > 50);
                     }
                     // call it again after one second
-                    setTimeout(requestData, 2000);
+                    setTimeout(requestData, 1000);
                 },
                 cache: false
             });
@@ -45,7 +46,7 @@ $(document).ready(function () {
                 marginRight: 10,
                 events: {
                     load: function() {
-                        var chart1 = this;
+                        chart1 = this;
                     }
                 }
             },
@@ -92,7 +93,7 @@ $(document).ready(function () {
                 marginRight: 10,
                 events: {
                     load: function() {
-                        var chart2 = this;
+                        chart2 = this;
                     }
                 }
             },
@@ -139,7 +140,7 @@ $(document).ready(function () {
                 marginRight: 10,
                 events: {
                     load: function() {
-                        var chart3 = this;
+                        chart3 = this;
                     }
                 }
             },
